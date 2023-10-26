@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;0,900;1,600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  /* why max-width? */
+  height: auto;
+}
+
+header,
+aside,
+footer {
+  padding: 1rem;
+}
+
+header {
+  background-color: antiquewhite;
+  font-size: 2rem;
+}
+aside {
+  background-color: aquamarine;
+  max-width: 200px;
+}
+main {
+  margin: 1em 0;
+}
+
+article {
+  border: solid 1px #247e9d;
+  text-align: center;
+}
+
+button {
+  background: #3c8453;
+  color: #f6f6f6;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: .6rem;
+  display: inline-block;
+  padding: 7px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+footer {
+  background-color: #247e9d;
+}
+
+
+
+header {
+  grid-area: header;
+}
+aside {
+  grid-area: aside;
+  display: grid;
+  justify-content:center;
+  align-items: center;
+  
+}
+.images {
+  grid-area: main;
+  display: grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    
+  /* so Autofit is just the # of child elements in the grid, like 3 here
+  and minmax is giving the min and max range of each column, before moving to next col  */
+  grid-gap: 1em;
+}
+
+article {
+  display: grid; /* to maintain the full box size (max witdh=  100% of img above!*/
+  justify-content: center;
+  /* grid property: horitzontal center */
+  align-items: center;
+  /* grid propery: vertical center: as opposed to align-self, which is reduces the size of box */
+}
+
+footer {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "aside"
+    "footer";
+  /* rearranging 'aside' after 'main' as otherwise in HTML file */
+}
+
+article:nth-of-type(3) {
+  grid-column: 1/-1;
+  /* Nth of type(3) is the shark, and grid-column (start 1 /stop -1), its a grid in itself */
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    grid-template-areas:
+      "header header header header"
+      ". aside main ."
+      /* this one require 4 columns to the container, so 4 for header and footer too */
+      "footer footer footer footer";
+  }
+  aside {
+    margin-right: 1rem;
+  }
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  article:nth-of-type(3) {
+    grid-column: auto;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  
+  
+  aside {
+  
+    margin-right: 1rem;
+    max-width: none;
+    display: inline;
+  }
+ 
+}
