@@ -81,6 +81,11 @@ article {
   /* grid property: horitzontal center */
   align-items: center;
   /* grid propery: vertical center: as opposed to align-self, which is reduces the size of box */
+  border-radius: 0.75rem;
+}
+
+article:hover {
+  box-shadow:14px 13px 22px 6px rgba(29, 53, 171, 0.69),6px 14px 21px 9px rgba(39, 171, 19, 0.74);
 }
 
 footer {
