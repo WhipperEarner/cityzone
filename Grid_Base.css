@@ -1,39 +1,139 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;0,900;1,600&display=swap");
 
+:root {
+  /* colors */
+  --clr-white: hsl(220, 37%, 100%);
+  --clr-surface: hsl(220, 37%, 97%);
+  --clr-text: hsl(244, 44%, 14%);
+
+  --clr-yellow-400: hsl(42, 99%, 69%);
+  --clr-yellow-300: hsl(47, 100%, 90%);
+  --clr-purple-400: hsl(280, 96%, 45%);
+  --clr-purple-300: hsl(282, 89%, 90%);
+  --clr-cyan-400: hsl(198, 99%, 49%);
+  --clr-green-300: hwb(112 47% 28%);
+
+  /* font families */
+  --ff-base: "IBM Plex Sans", sans-serif;
+  --ff-accent: "Young Serif", serif;
+
+  /* font weights */
+  --fw-regular: 500;
+  --fw-bold: 600;
+  --fw-black: 700;
+
+  /* font sizes */
+  --fs-300: 1rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.375rem;
+  --fs-600: 1.75rem;
+  --fs-700: 2.25rem;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Nunito", sans-serif;
   box-sizing: border-box;
+  padding: initial;
+  margin: initial;
 }
 
-img {
-  max-width: 100%;
-  /* why max-width? */
-  height: auto;
-}
 
-header,
 aside,
 footer {
   padding: 1rem;
 }
 
-header {
-  background-color: antiquewhite;
-  font-size: 2rem;
+body {
+  font-family: "Source Sans Pro", sans-serif;
 }
+
+
+.header-outer {
+  align-items: center;
+  background: var(--clr-cyan-400);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* set the height for the header at its max height you want */
+  height: 150px;
+  left: 0;
+  padding: 0 50px;
+  position: sticky;
+  /** set the value of `top` with the difference between
+  * the height of the outer and inner container to compensate
+  * for this */
+  top: -50px;
+  /* width: 100%; */
+  z-index: 1;
+}
+
+.header-inner {
+  align-items: center;
+  background-color:var(clr-surface);
+  display: flex;
+  /** specify the height of the header that you want when scrolling
+  *The difference between this height and the height of the outer header
+  *is the value of the `top` of the outer container */
+  height: 100px;
+  justify-content: space-between;
+  left: 0;
+  position: sticky;
+  top: 0;
+  width: 80%;
+}
+
+.logo-container {
+  display: flex;
+  gap: 1rem;
+  justify-content:space-evenly;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+header h3 {
+  font-family:var(--ff-accent);
+}
+
+.logo-container article {
+  flex-grow: 1;
+  flex-shrink: 1;
+  border: solid 1px #247e9d;
+  text-align: center;
+}
+
+  
+.logo-container article img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 aside {
   background-color: aquamarine;
   max-width: 200px;
 }
+
 main {
   margin: 1em;
 }
+main .text {
+  margin: 0 auto;
+  padding: 30px;
+  /* max-width: 900px; */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  }
+
+  main .text p {
+    margin: 30px 0;
+  }
 
 article {
   border: solid 1px #247e9d;
   text-align: center;
+}
+article img {
+  max-width: 100%;
+  height: auto;
 }
 
 button {
@@ -52,8 +152,6 @@ button {
 footer {
   background-color: #247e9d;
 }
-
-
 
 header {
   grid-area: header;
@@ -135,5 +233,13 @@ article:nth-of-type(3) {
     max-width: none;
     display: inline;
   }
+
+  main .text {
+    margin: 0 auto;
+    padding: 10px;
+    /* max-width: 900px; */
+    font-size: 1.2rem;
+    line-height: 1.2;
+    }
  
 }
