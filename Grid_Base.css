@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;0,900;1,600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
 
 :root {
   /* colors */
@@ -16,6 +17,7 @@
   /* font families */
   --ff-base: "IBM Plex Sans", sans-serif;
   --ff-accent: "Young Serif", serif;
+  --ff-headings: 'Merriweather', serif;
 
   /* font weights */
   --fw-regular: 500;
@@ -70,6 +72,7 @@ footer {
   z-index: 1;
 }
 
+
 .header-inner {
   align-items: center;
   background-color:var(clr-surface);
@@ -95,7 +98,10 @@ footer {
 
 
 header h3 {
-  font-family:var(--ff-accent);
+  padding-left: 20px;
+  font-family:var(--ff-headings);
+  font-weight: var(--fs-700);
+  font-size:var(--fs-600);
 }
 
 .logo-container article {
@@ -110,7 +116,6 @@ header h3 {
   max-width: 100%;
   height: auto;
 }
-
 
 
 /* header {
@@ -259,6 +264,25 @@ footer {
     /* max-width: 900px; */
     font-size: 1.2rem;
     line-height: 1.2;
+    }
+
+    .logo-container article {
+      flex-shrink: 0;
+    }
+
+    .header-inner {
+      align-items:center;
+      background-color:var(clr-surface);
+      display: flex;
+      /** specify the height of the header that you want when scrolling
+      *The difference between this height and the height of the outer header
+      *is the value of the `top` of the outer container */
+      height: 100px;
+      justify-content:space-evenly;
+      left: 80px;
+      position: sticky;
+      top: 0;
+      min-width: 80%;
     }
 
 
