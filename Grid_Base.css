@@ -30,22 +30,27 @@
   --fs-700: 2.25rem;
 }
 
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
 * {
   box-sizing: border-box;
   padding: initial;
   margin: initial;
 }
 
-
-aside,
-footer {
-  padding: 1rem;
-}
-
 body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+/* header, */
+aside,
+footer {
+  padding: 1rem;
+}
 
 .header-outer {
   align-items: center;
@@ -88,6 +93,7 @@ body {
   flex-shrink: 1;
 }
 
+
 header h3 {
   font-family:var(--ff-accent);
 }
@@ -105,6 +111,12 @@ header h3 {
   height: auto;
 }
 
+
+
+/* header {
+  background-color: antiquewhite;
+  font-size: 2rem;
+} */
 
 aside {
   background-color: aquamarine;
@@ -153,16 +165,18 @@ footer {
   background-color: #247e9d;
 }
 
+
 header {
   grid-area: header;
 }
+
 aside {
   grid-area: aside;
   display: grid;
   justify-content:center;
   align-items: center;
-  
-}
+  }
+
 .images {
   grid-area: main;
   display: grid;
@@ -174,11 +188,15 @@ aside {
 }
 
 article {
+  /* position: relative; */
   display: grid; /* to maintain the full box size (max witdh=  100% of img above!*/
   justify-content: center;
   /* grid property: horitzontal center */
   align-items: center;
   /* grid propery: vertical center: as opposed to align-self, which is reduces the size of box */
+  /* gap: 1rem; */
+  background: var(--clr-white);
+  /* padding: 2rem; */
   border-radius: 0.75rem;
 }
 
@@ -200,10 +218,14 @@ footer {
   /* rearranging 'aside' after 'main' as otherwise in HTML file */
 }
 
-article:nth-of-type(3) {
-  grid-column: 1/-1;
-  /* Nth of type(3) is the shark, and grid-column (start 1 /stop -1), its a grid in itself */
-}
+ /* article:nth-of-type(:last-child) {
+  grid-column: 1/-1; } */
+  /* Nth of type(last child) is the shark, and grid-column (start 1 /stop -1), its a grid in itself */
+
+
+
+
+
 
 @media screen and (min-width: 800px) {
   .container {
@@ -219,21 +241,18 @@ article:nth-of-type(3) {
   main {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  article:nth-of-type(3) {
+  article:nth-of-type(:last-child) {
     grid-column: auto;
   }
 }
 
 @media screen and (max-width: 799px) {
   
-  
   aside {
-  
     margin-right: 1rem;
     max-width: none;
     display: inline;
   }
-
   main .text {
     margin: 0 auto;
     padding: 10px;
@@ -241,5 +260,9 @@ article:nth-of-type(3) {
     font-size: 1.2rem;
     line-height: 1.2;
     }
- 
+
+
 }
+
+
+
