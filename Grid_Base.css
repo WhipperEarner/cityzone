@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;0,900;1,600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap");
 
 :root {
   /* colors */
@@ -17,7 +17,7 @@
   /* font families */
   --ff-base: "IBM Plex Sans", sans-serif;
   --ff-accent: "Young Serif", serif;
-  --ff-headings: 'Merriweather', serif;
+  --ff-headings: "Merriweather", serif;
 
   /* font weights */
   --fw-regular: 500;
@@ -44,15 +44,16 @@
   /* margin: initial; */
 }
 
+/* ----------------------------------------- */
+
 body {
   font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 /* header, */
-aside,
-footer {
-  padding: 1rem;
-}
+/* ----------------------------------------- */
 
 .header-outer {
   align-items: center;
@@ -72,10 +73,9 @@ footer {
   z-index: 1;
 }
 
-
 .header-inner {
   align-items: center;
-  background-color:var(clr-surface);
+  background-color: var(clr-surface);
   display: flex;
   /** specify the height of the header that you want when scrolling
   *The difference between this height and the height of the outer header
@@ -91,17 +91,16 @@ footer {
 .logo-container {
   display: flex;
   gap: 1rem;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
-
 header h3 {
   padding-left: 20px;
-  font-family:var(--ff-headings);
+  font-family: var(--ff-headings);
   font-weight: var(--fs-700);
-  font-size:var(--fs-600);
+  font-size: var(--fs-600);
 }
 
 .logo-container article {
@@ -111,17 +110,81 @@ header h3 {
   text-align: center;
 }
 
-  
 .logo-container article img {
   max-width: 100%;
   height: auto;
 }
+/* ----------------------------------------- */
 
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+}
 
-/* header {
-  background-color: antiquewhite;
-  font-size: 2rem;
-} */
+.accordion-content[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+}
+
+.wrapper {
+  width: min(65ch, 100% - 4rem);
+  margin-inline: auto;
+}
+
+.accordion {
+  background: #121212;
+  color: #effeef;
+  padding: 1rem;
+}
+
+.accordion-panel {
+  padding: 1rem;
+  border: 1px solid;
+}
+
+.accordion h2 {
+  position: relative;
+}
+
+.accordion-trigger {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.accordion-trigger::before,
+.accordion-trigger::after {
+  position: absolute;
+  right: 1em;
+  content: "";
+  display: block;
+  width: 1em;
+  height: 5px;
+  background: currentcolor;
+  transition: transform 500ms;
+}
+
+.accordion-trigger::after {
+  rotate: 90deg;
+  translate: 0 -1.5em;
+}
+
+.accordion-trigger[aria-expanded="true"]::before,
+.accordion-trigger[aria-expanded="true"]::after {
+  transform: rotate(45deg);
+}
+/* ----------------------------------------- */
+
+header,
+aside,
+footer {
+  padding: 1rem;
+}
 
 aside {
   background-color: aquamarine;
@@ -131,34 +194,22 @@ aside {
 main {
   margin: 1em;
 }
-main .text {
-  margin: 0 auto;
-  padding: 30px;
-  /* max-width: 900px; */
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.4;
-  }
 
-  main .text p {
-    margin: 30px 0;
-  }
-
-article {
+.images article {
   border: solid 1px #247e9d;
   text-align: center;
 }
-article img {
+.images article img {
   max-width: 100%;
   height: auto;
 }
 
-button {
+aside button {
   background: #3c8453;
   color: #f6f6f6;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: .6rem;
+  font-size: 0.6rem;
   display: inline-block;
   padding: 7px;
   letter-spacing: 0.1em;
@@ -170,7 +221,6 @@ footer {
   background-color: #247e9d;
 }
 
-
 header {
   grid-area: header;
 }
@@ -178,21 +228,22 @@ header {
 aside {
   grid-area: aside;
   display: grid;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  }
+}
 
 .images {
   grid-area: main;
   display: grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-    
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-top: 17px;
+
   /* so Autofit is just the # of child elements in the grid, like 3 here
   and minmax is giving the min and max range of each column, before moving to next col  */
   grid-gap: 1em;
 }
 
-article {
+.images article {
   /* position: relative; */
   display: grid; /* to maintain the full box size (max witdh=  100% of img above!*/
   justify-content: center;
@@ -205,8 +256,10 @@ article {
   border-radius: 0.75rem;
 }
 
-article:hover {
-  box-shadow:14px 13px 22px 6px rgba(29, 53, 171, 0.69),6px 14px 21px 9px rgba(39, 171, 19, 0.74);
+.images article:hover,
+.accordion-panel:hover {
+  box-shadow: 14px 13px 22px 6px rgba(29, 53, 171, 0.69),
+    6px 14px 21px 9px rgba(39, 171, 19, 0.74);
 }
 
 footer {
@@ -223,14 +276,11 @@ footer {
   /* rearranging 'aside' after 'main' as otherwise in HTML file */
 }
 
- /* article:nth-of-type(:last-child) {
+/* ----------------------------------------- */
+
+/* article:nth-of-type(:last-child) {
   grid-column: 1/-1; } */
-  /* Nth of type(last child) is the shark, and grid-column (start 1 /stop -1), its a grid in itself */
-
-
-
-
-
+/* Nth of type(last child) is the shark, and grid-column (start 1 /stop -1), its a grid in itself */
 
 @media screen and (min-width: 800px) {
   .container {
@@ -252,47 +302,47 @@ footer {
 }
 
 @media screen and (max-width: 799px) {
-  
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
   aside {
     margin-right: 1rem;
     max-width: none;
     display: inline;
   }
-  main .text {
-    margin: 0 auto;
-    padding: 10px;
-    /* max-width: 900px; */
-    font-size: 1.2rem;
-    line-height: 1.2;
-    }
 
-    /* .logo-container article {
-      flex-shrink: 0;
-    } */
+  .logo-container article {
+    flex-shrink: 0;
+  }
 
-    .header-inner {
-      align-items:center;
-      background-color:var(clr-surface);
-      display: flex;
-      /** specify the height of the header that you want when scrolling
-      *The difference between this height and the height of the outer header
-      *is the value of the `top` of the outer container */
-      height: 100px;
-      justify-content:right;
-      left: 80px;
-      position: sticky;
-      top: 0;
-      min-width: 80%;
-    }
+  .logo img {
+    object-fit: contain;
+    display: none;
+  }
 
-    header h3 {
-      margin-left: 10px;
-      font-family:var(--ff-headings);
-      font-weight: var(--fs-100);
-      font-size:var(--fs-300);
-    }
+  .header-inner {
+    align-items: center;
+    background-color: var(clr-surface);
+    display: flex;
+    /** specify the height of the header that you want when scrolling
+    *The difference between this height and the height of the outer header
+    *is the value of the `top` of the outer container */
+    height: 100px;
+    justify-content: right;
+    left: 80px;
+    position: sticky;
+    top: 0;
+    min-width: 80%;
+  }
 
+  header h3 {
+    margin-left: 10px;
+    font-family: var(--ff-headings);
+    font-weight: var(--fs-100);
+    font-size: var(--fs-300);
+    display: none;
+  }
 }
-
-
-
