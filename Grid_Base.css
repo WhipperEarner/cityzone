@@ -41,7 +41,6 @@
 * {
   box-sizing: border-box;
   padding: initial;
-  /* margin: initial; */
 }
 
 /* ----------------------------------------- */
@@ -307,7 +306,6 @@ footer {
     font-size: 1rem;
     line-height: 1.5;
   }
-
   .accordion-trigger {
     margin-inline: 3% 20%;
     writing-mode: horizontal-tb;
@@ -315,7 +313,7 @@ footer {
     line-height: 1.2;
   }
   .accordion-trigger::after {
-    top: 35px;
+    top: 36px;
     right: 24px;
   }
 
