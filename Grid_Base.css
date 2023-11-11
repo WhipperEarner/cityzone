@@ -283,7 +283,7 @@ footer {
 /* --Scroller-------------------------------------- */
 
 .scroller {
-  max-width: 1400px;
+  width: min(90vw, 1300px);
 }
 
 .scroller__inner {
@@ -449,8 +449,5 @@ html {
     font-weight: var(--fs-100);
     font-size: var(--fs-300);
     display: none;
-  }
-  .scroller {
-    max-width: 600px;
   }
 }
