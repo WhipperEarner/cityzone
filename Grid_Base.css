@@ -313,7 +313,7 @@ footer {
     line-height: 1.2;
   }
   .accordion-trigger::after {
-     top: 40px;
+    top: 40px;
     right: 24px;
   }
 
