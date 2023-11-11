@@ -1,61 +1,450 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,700;0,900;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap");
 
-// Paragraph
+:root {
+  /* colors */
+  --clr-white: hsl(220, 37%, 100%);
+  --clr-surface: hsl(220, 37%, 97%);
+  --clr-text: hsl(244, 44%, 14%);
 
-const accordion = document.querySelector(".accordion");
+  --clr-yellow-400: hsl(42, 99%, 69%);
+  --clr-yellow-300: hsl(47, 100%, 90%);
+  --clr-purple-400: hsl(280, 96%, 45%);
+  --clr-purple-300: hsl(282, 89%, 90%);
+  --clr-cyan-400: hsl(198, 99%, 49%);
+  --clr-green-300: hwb(112 47% 28%);
 
-accordion.addEventListener("click", (e) => {
-  const activePanel = e.target.closest(".accordion-panel");
-  if (!activePanel) return;
-  toggleAccordion(activePanel);
-});
+  /* font families */
+  --ff-base: "IBM Plex Sans", sans-serif;
+  --ff-accent: "Young Serif", serif;
+  --ff-headings: "Merriweather", serif;
 
-function toggleAccordion(panelToActivate) {
-  const activeButton = panelToActivate.querySelector(".accordion-panel button");
-  const activePanel = panelToActivate.querySelector(".accordion-content");
-  const activePanelIsOpened = activeButton.getAttribute("aria-expanded");
+  /* font weights */
+  --fw-regular: 500;
+  --fw-bold: 600;
+  --fw-black: 700;
 
-  if (activePanelIsOpened === "true") {
-    panelToActivate
-      .querySelector(".accordion-panel button")
-      .setAttribute("aria-expanded", false);
+  /* font sizes */
+  --fs-300: 1rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.375rem;
+  --fs-600: 1.75rem;
+  --fs-700: 2.25rem;
+}
 
-    panelToActivate
-      .querySelector(".accordion-content")
-      .setAttribute("aria-hidden", true);
-  } else {
-    panelToActivate.querySelector(".accordion-panel button").setAttribute("aria-expanded", true);
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
-    panelToActivate
-      .querySelector(".accordion-content")
-      .setAttribute("aria-hidden", false);
+* {
+  box-sizing: border-box;
+  padding: initial;
+}
+
+/* ----------------------------------------- */
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+/* header, */
+/* ----------------------------------------- */
+
+.header-outer {
+  align-items: center;
+  background: var(--clr-cyan-400);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  /* set the height for the header at its max height you want */
+  height: 150px;
+  left: 0;
+  padding: 0 50px;
+  position: sticky;
+  /** set the value of `top` with the difference between
+  * the height of the outer and inner container to compensate
+  * for this */
+  top: -50px;
+  /* width: 100%; */
+  z-index: 1;
+}
+
+.header-inner {
+  align-items: center;
+  background-color: var(clr-surface);
+  display: flex;
+  /** specify the height of the header that you want when scrolling
+  *The difference between this height and the height of the outer header
+  *is the value of the `top` of the outer container */
+  height: 100px;
+  justify-content: space-between;
+  left: 0;
+  position: sticky;
+  top: 0;
+  width: 80%;
+}
+
+.logo-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+header h3 {
+  padding-left: 20px;
+  font-family: var(--ff-headings);
+  font-weight: var(--fs-700);
+  font-size: var(--fs-600);
+}
+
+.logo-container article {
+  flex-grow: 1;
+  flex-shrink: 1;
+  border: solid 1px #247e9d;
+  text-align: center;
+}
+
+.logo-container article img {
+  max-width: 100%;
+  height: auto;
+}
+/* ----------------------------------------- */
+
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+}
+
+.accordion-content[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+}
+
+.wrapper {
+  width: min(65ch, 100% - 4rem);
+  margin-inline: auto;
+}
+
+.accordion {
+  background: #121212;
+  color: #effeef;
+  padding: 1rem;
+}
+
+.accordion-panel {
+  padding: 1rem;
+  border: 1px solid;
+}
+
+.accordion h2 {
+  position: relative;
+}
+
+.accordion-trigger {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.accordion-trigger::before,
+.accordion-trigger::after {
+  position: absolute;
+  right: 1em;
+  content: "";
+  display: block;
+  width: 1em;
+  height: 5px;
+  background: currentcolor;
+  transition: transform 500ms;
+}
+
+.accordion-trigger::after {
+  rotate: 90deg;
+  translate: 0 -1.5em;
+}
+
+.accordion-trigger[aria-expanded="true"]::before,
+.accordion-trigger[aria-expanded="true"]::after {
+  transform: rotate(45deg);
+}
+/* ----------------------------------------- */
+
+header,
+aside,
+footer {
+  padding: 1rem;
+}
+
+aside {
+  background-color: aquamarine;
+  max-width: 200px;
+}
+
+main {
+  margin: 1em;
+}
+
+.images article {
+  border: solid 1px #247e9d;
+  text-align: center;
+}
+.images article img {
+  max-width: 100%;
+  height: auto;
+}
+
+aside button {
+  background: #3c8453;
+  color: #f6f6f6;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  display: inline-block;
+  padding: 7px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+footer {
+  background-color: #247e9d;
+}
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.images {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-top: 17px;
+
+  /* so Autofit is just the # of child elements in the grid, like 3 here
+  and minmax is giving the min and max range of each column, before moving to next col  */
+  grid-gap: 1em;
+}
+
+.images article {
+  /* position: relative; */
+  display: grid; /* to maintain the full box size (max witdh=  100% of img above!*/
+  justify-content: center;
+  /* grid property: horitzontal center */
+  align-items: center;
+  /* grid propery: vertical center: as opposed to align-self, which is reduces the size of box */
+  /* gap: 1rem; */
+  background: var(--clr-white);
+  /* padding: 2rem; */
+  border-radius: 0.75rem;
+}
+
+.images article:hover,
+.accordion:hover {
+  box-shadow: 14px 13px 22px 6px rgba(29, 53, 171, 0.69),
+    6px 14px 21px 9px rgba(39, 171, 19, 0.74);
+  /* transform: scale(0.5) translate(-100%, -100%); */
+  transition: transform 1s;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "aside"
+    "footer";
+  /* rearranging 'aside' after 'main' as otherwise in HTML file */
+}
+
+/* --Scroller-------------------------------------- */
+
+.scroller {
+  max-width: 1400px;
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+  --_animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
   }
 }
 
-// Scroller
+/* general styles */
 
-const scrollers = document.querySelectorAll(".scroller");
-
-// If a user hasn't opted in for reduded motion, then we add the animation
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
+:root {
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-primary-100: hsl(205, 15%, 58%);
+  --clr-primary-400: hsl(215, 25%, 27%);
+  --clr-primary-800: hsl(217, 33%, 17%);
+  --clr-primary-900: hsl(218, 33%, 9%);
 }
 
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    // add data-animated="true" to every `.scroller` on the page
-    scroller.setAttribute("data-animated", true);
+html {
+  color-scheme: dark;
+}
 
-    // Make an array from the elements within `.scroller-inner`
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
+.scrollWrap {
+  display: grid;
+  min-block-size: 100vh;
+  place-content: center;
+  font-family: system-ui;
+  font-size: 1.125rem;
+  background-color: var(--clr-primary-800);
+}
 
-    // For each item in the array, clone it
-    // add aria-hidden to it
-    // add it into the `.scroller-inner`
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
+.tag-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 1rem;
+  background: var(--clr-primary-400);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+}
+
+/* for testing purposed to ensure the animation lined up correctly */
+.test {
+  background: red !important;
+}
+
+/* ---------Media-------------------------------- */
+
+@media screen and (min-width: 800px) {
+  .container {
+    grid-template-areas:
+      "header header header header"
+      ". aside main ."
+      /* this one require 4 columns to the container, so 4 for header and footer too */
+      "footer footer footer footer";
+  }
+  aside {
+    margin-right: 1rem;
+  }
+  main {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  article:nth-of-type(:last-child) {
+    grid-column: auto;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .accordion-trigger {
+    margin-inline: 3% 20%;
+    writing-mode: horizontal-tb;
+    font-size: 1.2;
+    line-height: 1.2;
+  }
+  .accordion-trigger::after {
+    top: 40px;
+    right: 24px;
+  }
+
+  aside {
+    margin-right: 1rem;
+    max-width: none;
+    display: inline;
+  }
+
+  .logo-container article {
+    flex-shrink: 0;
+  }
+
+  .logo img {
+    object-fit: contain;
+    display: none;
+  }
+
+  .header-inner {
+    align-items: center;
+    background-color: var(clr-surface);
+    display: flex;
+    /** specify the height of the header that you want when scrolling
+    *The difference between this height and the height of the outer header
+    *is the value of the `top` of the outer container */
+    height: 100px;
+    justify-content: right;
+    left: 80px;
+    position: sticky;
+    top: 0;
+    min-width: 80%;
+  }
+
+  header h3 {
+    margin-left: 10px;
+    font-family: var(--ff-headings);
+    font-weight: var(--fs-100);
+    font-size: var(--fs-300);
+    display: none;
+  }
 }
