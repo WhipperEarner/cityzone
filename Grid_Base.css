@@ -450,4 +450,7 @@ html {
     font-size: var(--fs-300);
     display: none;
   }
+  .scroller {
+    max-width: 600px;
+  }
 }
