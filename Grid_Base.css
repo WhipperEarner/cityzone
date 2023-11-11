@@ -316,6 +316,7 @@ footer {
   }
   .accordion-trigger::after {
     top: 35px;
+    right: 24px;
   }
 
   aside {
