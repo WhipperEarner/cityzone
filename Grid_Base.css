@@ -308,6 +308,16 @@ footer {
     line-height: 1.5;
   }
 
+  .accordion-trigger {
+    margin-inline: 3% 20%;
+    writing-mode: horizontal-tb;
+    font-size: 1.2;
+    line-height: 1.2;
+  }
+  .accordion-trigger::after {
+    top: 36px;
+  }
+
   aside {
     margin-right: 1rem;
     max-width: none;
