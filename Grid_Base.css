@@ -13,6 +13,7 @@
   --clr-purple-300: hsl(282, 89%, 90%);
   --clr-cyan-400: hsl(198, 99%, 49%);
   --clr-green-300: hwb(112 47% 28%);
+  --clr-darkcyan: rgb(0, 139, 139);
 
   /* font families */
   --ff-base: "IBM Plex Sans", sans-serif;
@@ -38,10 +39,17 @@
   box-sizing: border-box;
 } */
 
-* {
+/* * {
   box-sizing: border-box;
   padding: initial;
+} */
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
+/* box-sizing-probably-slightly-better-best-practice/ */
 
 /* ----------------------------------------- */
 
@@ -56,7 +64,7 @@ body {
 
 .header-outer {
   align-items: center;
-  background: var(--clr-cyan-400);
+  background: var(--clr-darkcyan);
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   /* set the height for the header at its max height you want */
@@ -186,7 +194,7 @@ footer {
 }
 
 aside {
-  background-color: aquamarine;
+  background-color: var(--clr-darkcyan);
   max-width: 200px;
 }
 
@@ -216,9 +224,9 @@ aside button {
   border-radius: 4px;
 }
 
-footer {
+/* footer {
   background-color: #247e9d;
-}
+} */
 
 header {
   grid-area: header;
@@ -259,11 +267,14 @@ aside {
   box-shadow: 14px 13px 22px 6px rgba(29, 53, 171, 0.69),
     6px 14px 21px 9px rgba(39, 171, 19, 0.74);
   /* transform: scale(0.5) translate(-100%, -100%); */
+  /* transition: transform 1s;  */
+  /* transform only on large screen */
 }
 .accordion:hover {
   box-shadow: inset 7px 2px 15px 12px rgba(128, 0, 0, 0.91),
     7px 8px 18px 15px rgba(104, 105, 44, 0.89),
     -1px -6px 20px 9px rgba(67, 10, 97, 1);
+  /* transition: transform 1s; */
 }
 
 footer {
@@ -279,7 +290,6 @@ footer {
     "footer";
   /* rearranging 'aside' after 'main' as otherwise in HTML file */
 }
-
 /* --Scroller-------------------------------------- */
 
 .scroller {
@@ -377,7 +387,7 @@ html {
 
 /* ---------Media-------------------------------- */
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1400px) {
   .container {
     grid-template-areas:
       "header header header header"
@@ -402,6 +412,7 @@ html {
     font-size: 1rem;
     line-height: 1.5;
   }
+
   .accordion-trigger {
     margin-inline: 3% 20%;
     writing-mode: horizontal-tb;
