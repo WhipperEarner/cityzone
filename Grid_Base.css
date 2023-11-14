@@ -81,26 +81,24 @@ body {
 }
 
 .header-inner {
-  align-items: center;
   background-color: var(clr-surface);
   display: flex;
   /** specify the height of the header that you want when scrolling
   *The difference between this height and the height of the outer header
   *is the value of the `top` of the outer container */
   height: 100px;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   left: 0;
   position: sticky;
   top: 0;
   width: 80%;
-}
-
-.logo-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-evenly;
-  flex-grow: 1;
+  flex-grow: 0;
   flex-shrink: 1;
+  flex-basis: 4%;
+  flex-wrap: nowrap;
+  /* gap: 40px; */
 }
 
 header h3 {
@@ -110,16 +108,10 @@ header h3 {
   font-size: var(--fs-600);
 }
 
-.logo-container article {
-  flex-grow: 1;
-  flex-shrink: 1;
-  border: solid 1px #247e9d;
-  text-align: center;
-}
-
-.logo-container article img {
-  max-width: 100%;
-  height: auto;
+.header-inner article img {
+  width: min(60vw, 364px);
+  height: 96px;
+  object-fit: cover;
 }
 /* ----------------------------------------- */
 
@@ -452,30 +444,6 @@ html {
     margin-right: 1rem;
     max-width: none;
     display: inline;
-  }
-
-  .logo-container article {
-    flex-shrink: 0;
-  }
-
-  .logo img {
-    object-fit: contain;
-    display: none;
-  }
-
-  .header-inner {
-    align-items: center;
-    background-color: var(clr-surface);
-    display: flex;
-    /** specify the height of the header that you want when scrolling
-    *The difference between this height and the height of the outer header
-    *is the value of the `top` of the outer container */
-    height: 100px;
-    justify-content: right;
-    left: 80px;
-    position: sticky;
-    top: 0;
-    min-width: 80%;
   }
 
   header h3 {
