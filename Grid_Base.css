@@ -111,7 +111,7 @@ header h3 {
 .header-inner article img {
   width: min(40vw, 364px);
   height: 96px;
-  object-fit: cover;
+  object-fit: contain;
 }
 /* ----------------------------------------- */
 
